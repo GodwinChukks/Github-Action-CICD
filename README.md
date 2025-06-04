@@ -47,6 +47,48 @@
 ### 5. Docker Image Push to Docker Hub: (Pulling image, stopping old container, running new one)
 ### Once your containerized house is built and scanned, you need a place to store it where it can be easily accessed for deployment. "Docker Hub" is like a public or private warehouse for these pre-built Docker images. "Docker Image Push" is the act of uploading your newly built and scanned Docker image to Docker Hub (or a similar container registry). From Docker Hub, it can then be easily pulled down and deployed to your servers.
 
+## Project Structure:
+
+```
+spring-boot-ci-cd-pipeline/
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml             # GitHub Actions workflow file
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           └── myapp/    # Your Spring Boot application package
+│   │   │               ├── MySpringBootApplication.java
+│   │   │               ├── controller/
+│   │   │               │   └── HelloController.java  # Example: The /hello endpoint
+│   │   │               ├── service/
+│   │   │               └── model/
+│   │   │               └── ... (other Java source files)
+│   │   └── resources/
+│   │       ├── application.properties  # Or application.yml
+│   │       ├── static/
+│   │       ├── templates/
+│   │       └── logback-spring.xml
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── example/
+│                   └── myapp/
+│                       └── MySpringBootApplicationTests.java
+│                       └── ... (other unit test files)
+├── .gitignore                    # Specifies intentionally untracked files to ignore
+├── pom.xml                       # Maven Project Object Model file (for dependencies, build config)
+├── README.md                     # Project documentation
+├── Dockerfile                    # Defines how to build the Docker image
+├── .checkstyle/                  # (Optional) Directory for Checkstyle configurations
+│   └── checkstyle.xml
+├── .gitleaks.toml                # (Optional) Gitleaks configuration for secret scanning
+└── mvnw                          # Maven Wrapper scripts (for consistent Maven execution)
+└── mvnw.cmd
+```
+
 
 
 ## Step 1
